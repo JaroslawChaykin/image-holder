@@ -1,19 +1,19 @@
 import React from 'react';
-import { Button, Card } from 'react-bootstrap';
-import {useNavigate} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { Image } from 'react-bootstrap';
 
 const ImageItem = ({image}) => {
-    const navigate = useNavigate()
+
     return (
-      <Card style={{ width: '18rem', margin: '20px 0'}}>
-          <Card.Img variant="top" src={image.thumbnailUrl} />
-          <Card.Body>
-              <Card.Text>
-                  {image.title}
-              </Card.Text>
-              <Button variant="primary" onClick={() => navigate(`/${image.id}`)}>Перейти</Button>
-          </Card.Body>
-      </Card>
+      <div className={'d-flex mt-lg-5 position-relative image-card'}>
+          <Image rounded src={image.thumbnailUrl}/>
+          <Link to={`/${image.id}`} className={'link-image align-items-center h-100 w-100 position-absolute' +
+            ' top-0' +
+            ' left-0' +
+            ' justify-content-center'}>
+              Подробнее
+          </Link>
+      </div>
     );
 };
 
