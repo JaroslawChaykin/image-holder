@@ -4,6 +4,7 @@ import Gallery from './Pages/Gallery';
 import ImageShow from './Pages/ImageShow';
 import { Button, Container, Image, Navbar, Offcanvas } from 'react-bootstrap';
 import { useState } from 'react';
+import About from './Pages/About';
 
 function App() {
 
@@ -16,11 +17,11 @@ function App() {
       <BrowserRouter>
           <Navbar bg="light" expand="lg">
               <Container>
-                  <Navbar.Brand href="#home">Test</Navbar.Brand>
+                  <Navbar.Brand href="#home">Чайкин Ярослав Александрович</Navbar.Brand>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav" className={'justify-content-end'}>
                       <Button variant="primary" onClick={handleShow}>
-                          Launch
+                          Меню
                       </Button>
                   </Navbar.Collapse>
               </Container>
@@ -28,6 +29,7 @@ function App() {
           <Routes>
               <Route exact path={'/'} element={<Gallery/>}/>
               <Route path={'/:id'} element={<ImageShow/>}/>
+              <Route path={'/about'} element={<About/>}/>
               <Route path={'*'} element={<Navigate to={'/'}/>}/>
           </Routes>
           <Offcanvas show={show} onHide={handleClose}>
