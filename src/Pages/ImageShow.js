@@ -25,7 +25,7 @@ const ImageShow = () => {
     return (
       <>
           <Container>
-              <Breadcrumb style={{margin: '20px 0'}}>
+              <Breadcrumb className={'my-4'}>
                   <Breadcrumb.Item onClick={() => navigate(-1)}>Главная</Breadcrumb.Item>
                   <Breadcrumb.Item active disabled>Картинка №{image?.id}</Breadcrumb.Item>
               </Breadcrumb>
@@ -35,11 +35,11 @@ const ImageShow = () => {
                 ? <Loader/>
                 :
                 <Container>
-                    <div className={'d-flex justify-content-around align-items-center text-center'} style={{height: '100%', marginTop: '100px'}}>
+                    <div className={'d-flex justify-content-around align-items-center text-center mt-5'}>
                         <div className="image" style={{width: '20rem'}}>
-                            <img src={image.url} className="w-100" style={{marginRight: '20px'}} alt=""/>
+                            <img src={image.url} className="w-100" alt=""/>
                         </div>
-                        <div className="content d-flex flex-column" style={{height: '100%'}}>
+                        <div className="content d-flex flex-column">
                             <h1>Группа №{image.albumId}</h1>
                             <p>{image.title}</p>
                         </div>
