@@ -9,26 +9,33 @@ const Gallery = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const fetchImages = async () => {
-        try {
-            const imagesPromises = [1, 2, 3, 4].map(item => fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${item}&_limit=6`).then(res => res.json()));
-            const getImages = await Promise.all(imagesPromises);
-            setImages(getImages);
-        } catch (e) {
-            console.log(e.message);
-        }
+        const timeout = await new Promise((resolve, reject) => {
+            setTimeout(async () => {
+                const imagesPromises = [1, 2, 3, 4].map(item => fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${item}&_limit=6`).then(res => res.json()));
+                const getImages = await Promise.all(imagesPromises);
+                resolve(getImages)
+            }, 1000)
+        }).then(data => setImages(data))
     };
+
     useEffect(() => {
-        fetchImages().then(() => setIsLoading(false));
+        fetchImages()
+          .then(() => {
+              setIsLoading(false);
+          });
     }, []);
 
     return (
-      <Container>
+      <>
           {
               isLoading
-                ? <Loader />
-                : <TabsImages images={images}/>
+                ? <Loader/>
+                :
+                <Container>
+                    <TabsImages images={images}/>
+                </Container>
           }
-      </Container>
+      </>
     );
 };
 
