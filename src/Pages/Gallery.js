@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import Loader from '../Components/Loader';
 import TabsImages from '../Components/TabsImages';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Gallery = () => {
