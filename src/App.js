@@ -16,10 +16,10 @@ function App() {
       <BrowserRouter>
           <Header handleShow={handleShow}/>
           <Routes>
-              <Route path={'/'} element={<Gallery/>}/>
-              <Route path={'/:id'} element={<ImageShow/>}/>
-              <Route path={'/about'} element={<About/>}/>
-              <Route path={'*'} element={<Navigate to={'/'}/>}/>
+              <Route path={'/image-holder/'} element={<Gallery/>}/>
+              <Route path={'/image-holder/images/:id'} element={<ImageShow/>}/>
+              <Route path={'/image-holder/about'} element={<About/>}/>
+              <Route path={'*'} element={<Navigate to={'/image-holder/'}/>}/>
           </Routes>
           <LeftNavbar show={show} handleClose={handleClose}/>
       </BrowserRouter>
