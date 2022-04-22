@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Breadcrumb, Container } from 'react-bootstrap';
 import Loader from '../Components/Loader';
+import axios from 'axios';
 
 const ImageShow = () => {
     const [image, setImage] = useState(null);
@@ -12,8 +13,8 @@ const ImageShow = () => {
     const fetchImage = async () => {
         const timeout = await new Promise((resolve, reject) => {
             setTimeout(async () => {
-                const imagesPromises = await fetch(`https://jsonplaceholder.typicode.com/photos/${params.id}`).then(res => res.json());
-                resolve(imagesPromises)
+                const imagePromise = await axios.get(`https://jsonplaceholder.typicode.com/photos/${params.id}`);
+                resolve(imagePromise.data);
             }, 1000)
         }).then(data => setImage(data))
     };
