@@ -1,5 +1,5 @@
 const defaultState = {
-    images: []
+    images: null
 }
 
 const ImagesReducer = (state = defaultState, action) => {
