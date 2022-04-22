@@ -1,32 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Breadcrumb, Container } from 'react-bootstrap';
-import Loader from '../Components/Loader';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../Components/Loader';
 
 const ImageShow = () => {
 
-    const [isLoading, setIsLoading] = useState(true);
     const params = useParams();
     const navigate = useNavigate()
 
     const dispatch = useDispatch()
     const image = useSelector(state => state.image.image)
 
-    const fetchImage = async () => {
-        const timeout = await new Promise((resolve, reject) => {
-            setTimeout(async () => {
-                const imagePromise = await axios.get(`https://jsonplaceholder.typicode.com/photos/${params.id}`);
-
-                resolve(imagePromise.data);
-            }, 1000)
-        }).then(data => dispatch({type: 'ADD_IMAGE', payload: data}))
-    };
-
     useEffect(() => {
-        fetchImage().then(() => setIsLoading(false));
-    }, []);
+        dispatch({type: 'ASYNC_ADD_IMAGE', payload: params.id})
+    }, [])
 
     return (
       <>
@@ -37,7 +25,7 @@ const ImageShow = () => {
               </Breadcrumb>
           </Container>
           {
-              isLoading
+              !image
                 ? <Loader/>
                 :
                 <Container>
