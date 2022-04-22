@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
           <Header handleShow={handleShow}/>
           <Routes>
-              <Route exact path={'/'} element={<Gallery/>}/>
+              <Route path={'/'} element={<Gallery/>}/>
               <Route path={'/:id'} element={<ImageShow/>}/>
               <Route path={'/about'} element={<About/>}/>
               <Route path={'*'} element={<Navigate to={'/'}/>}/>

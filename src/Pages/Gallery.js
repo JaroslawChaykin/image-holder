@@ -3,11 +3,14 @@ import { Container } from 'react-bootstrap';
 import Loader from '../Components/Loader';
 import TabsImages from '../Components/TabsImages';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Gallery = () => {
 
-    const [images, setImages] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+    const dispatch = useDispatch()
+    const images = useSelector(state => state.images.images)
 
     const fetchImages = async () => {
         const timeout = await new Promise((resolve, reject) => {
@@ -17,7 +20,7 @@ const Gallery = () => {
                 let arrImages = getImages.map(item => item = item.data);
                 resolve(arrImages)
             }, 1000)
-        }).then(data => setImages(data))
+        }).then(data => dispatch({type: 'ADD_IMAGES', payload: data}))
     };
 
     useEffect(() => {

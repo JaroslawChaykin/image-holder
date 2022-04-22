@@ -3,20 +3,25 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Breadcrumb, Container } from 'react-bootstrap';
 import Loader from '../Components/Loader';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ImageShow = () => {
-    const [image, setImage] = useState(null);
+
     const [isLoading, setIsLoading] = useState(true);
     const params = useParams();
     const navigate = useNavigate()
+
+    const dispatch = useDispatch()
+    const image = useSelector(state => state.image.image)
 
     const fetchImage = async () => {
         const timeout = await new Promise((resolve, reject) => {
             setTimeout(async () => {
                 const imagePromise = await axios.get(`https://jsonplaceholder.typicode.com/photos/${params.id}`);
+
                 resolve(imagePromise.data);
             }, 1000)
-        }).then(data => setImage(data))
+        }).then(data => dispatch({type: 'ADD_IMAGE', payload: data}))
     };
 
     useEffect(() => {
