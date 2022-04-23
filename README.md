@@ -1,7 +1,10 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+# Stack tecknologies
+* React
+* Redux
+* Redux-saga
+* React-bootstrap
+* React-router-dom
+* Axios
 ## Available Scripts
 
 In the project directory, you can run:
