@@ -19,7 +19,8 @@ const LeftNavbar = ({show, handleClose}) => {
           <Offcanvas.Body className={'d-flex flex-column justify-content-between'}>
               <div className={'d-flex flex-column'}>
                   <Link onClick={handleClose} to={'/'} className={'p-3 border-bottom link-dark text-decoration-none'}>Галерея</Link>
-                  <Link onClick={handleClose} to={'/About'} className={'p-3 border-bottom link-dark text-decoration-none'}>Обо мне</Link>
+                  <Link onClick={handleClose} to={'/image-holder/about'} className={'p-3 border-bottom link-dark' +
+                    ' text-decoration-none'}>Обо мне</Link>
               </div>
               <div className="footer">
                   <ButtonGroup aria-label="Basic example">

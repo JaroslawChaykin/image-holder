@@ -1,0 +1,7 @@
+export const ADD_IMAGE = "ADD_IMAGE"
+export const ADD_IMAGES = "ADD_IMAGES"
+export const ADD_COMMENTS = "ADD_COMMENTS"
+
+export const ASYNC_ADD_IMAGE = "ASYNC_ADD_IMAGE"
+export const ASYNC_ADD_IMAGES = "ASYNC_ADD_IMAGES"
+export const ASYNC_ADD_COMMENTS = "ASYNC_ADD_COMMENTS"

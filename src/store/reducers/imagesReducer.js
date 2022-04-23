@@ -1,10 +1,12 @@
+import { ADD_IMAGES } from '../actions';
+
 const defaultState = {
     images: null
 }
 
 const ImagesReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case "ADD_IMAGES":
+        case ADD_IMAGES:
             return {...state, images: action.payload}
         default:
             return state
